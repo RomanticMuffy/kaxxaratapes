@@ -5,12 +5,16 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/kaxxaratapes/',
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
+    },
+    build: {
+      sourcemap: false,
+      minify: 'esbuild',
     },
     server: {
       hmr: process.env.DISABLE_HMR !== 'true',
