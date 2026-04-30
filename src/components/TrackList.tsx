@@ -119,20 +119,20 @@ function SortableTrackItem({ track, albumId }: { track: Track; albumId: string; 
         isDragging && "opacity-50 ring-1 ring-light-border dark:ring-[#2A2A2A] z-50 shadow-lg"
       )}
     >
-      <div className="flex items-center py-3 px-2 transition-colors">
+      <div className="flex flex-wrap items-center py-2 px-2 transition-colors gap-2">
         <div 
           {...attributes} 
           {...listeners} 
-          className="cursor-grab active:cursor-grabbing text-light-muted dark:text-dark-muted hover:text-light-primary dark:hover:text-dark-primary p-2 pl-4 transition-colors"
+          className="cursor-grab active:cursor-grabbing text-light-muted dark:text-dark-muted hover:text-light-primary dark:hover:text-dark-primary p-2 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center order-1"
         >
-          <GripVertical size={14} />
+          <GripVertical size={18} />
         </div>
         
-        <div className="flex items-center justify-center w-8 h-8 mr-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer text-light-muted dark:text-dark-muted hover:text-light-primary dark:hover:text-[#F5F5F5]" onClick={track.audioId ? togglePlay : () => uploadRef.current?.click()}>
+        <div className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer text-light-muted dark:text-dark-muted hover:text-light-primary dark:hover:text-[#F5F5F5] order-2" onClick={track.audioId ? togglePlay : () => uploadRef.current?.click()}>
           {track.audioId ? (
-            isPlaying ? <Pause size={14} className="fill-current" /> : <Play size={14} className="fill-current ml-0.5" />
+            isPlaying ? <Pause size={18} className="fill-current" /> : <Play size={18} className="fill-current ml-0.5" />
           ) : (
-            <Upload size={14} />
+            <Upload size={18} />
           )}
         </div>
         <input 
@@ -169,7 +169,7 @@ function SortableTrackItem({ track, albumId }: { track: Track; albumId: string; 
               e.currentTarget.blur();
             }
           }}
-          className="flex-1 bg-transparent text-[13px] tracking-wide min-w-0 transition-colors"
+          className="flex-1 min-w-[120px] bg-transparent text-[13px] tracking-wide transition-colors order-3"
           placeholder={t.trackTitle}
         />
 
@@ -178,44 +178,44 @@ function SortableTrackItem({ track, albumId }: { track: Track; albumId: string; 
           value={track.duration}
           onChange={handleDurationChange}
           onBlur={handleDurationBlur}
-          className="w-16 text-right font-mono text-[11px] text-light-secondary dark:text-dark-secondary bg-transparent transition-colors"
+          className="w-16 text-right font-mono text-[11px] text-light-secondary dark:text-dark-secondary bg-transparent transition-colors order-4"
           placeholder="00:00"
         />
 
-        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex items-center gap-1 order-5">
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setExpanded(!expanded)}
-            className="p-1.5 text-light-muted dark:text-dark-muted hover:text-light-primary dark:hover:text-dark-primary rounded cursor-pointer transition-colors"
+            className="p-2 text-light-muted dark:text-dark-muted hover:text-light-primary dark:hover:text-dark-primary rounded cursor-pointer transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
           >
-            <MoreHorizontal size={14} />
+            <MoreHorizontal size={18} />
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => duplicateTrack(albumId, track.id)}
-            className="p-1.5 text-light-muted dark:text-dark-muted hover:text-light-primary dark:hover:text-dark-primary rounded cursor-pointer transition-colors"
+            className="p-2 text-light-muted dark:text-dark-muted hover:text-light-primary dark:hover:text-dark-primary rounded cursor-pointer transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
           >
-            <Copy size={14} />
+            <Copy size={18} />
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => deleteTrack(albumId, track.id)}
-            className="p-1.5 text-light-muted dark:text-dark-muted hover:text-red-500 rounded cursor-pointer transition-colors"
+            className="p-2 text-light-muted dark:text-dark-muted hover:text-red-500 rounded cursor-pointer transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
           >
-            <Trash2 size={14} />
+            <Trash2 size={18} />
           </motion.button>
         </div>
       </div>
 
       {audioUrl && (
-        <div className="flex items-center px-12 pl-14 pb-3 gap-3 transition-opacity">
+        <div className="flex flex-wrap items-center px-4 pb-3 gap-2 transition-opacity">
           <span className="font-mono text-[10px] text-light-muted dark:text-dark-muted w-10 text-right">
             {formatDuration(Math.floor(currentTime), useStore.getState().settings.durationFormat)}
           </span>
-          <div className="relative flex-1 h-1.5 bg-black/10 dark:bg-[#2A2A2A] rounded-full cursor-pointer overflow-hidden group/scrubber">
+          <div className="relative flex-1 min-w-[100px] h-1.5 bg-black/10 dark:bg-[#2A2A2A] rounded-full cursor-pointer overflow-hidden group/scrubber">
             <div 
               className="absolute top-0 left-0 h-full bg-light-primary dark:bg-dark-primary pointer-events-none rounded-full" 
               style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }} 
@@ -249,12 +249,12 @@ function SortableTrackItem({ track, albumId }: { track: Track; albumId: string; 
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="flex flex-col gap-2 px-12 py-4 bg-black/5 dark:bg-[#0A0A0A] rounded-b-2xl border-t border-light-border dark:border-[#2A2A2A]">
+            <div className="flex flex-col gap-2 px-4 py-4 bg-black/5 dark:bg-[#0A0A0A] rounded-b-2xl border-t border-light-border dark:border-[#2A2A2A]">
               <span className="font-mono text-[10px] tracking-widest text-light-muted dark:text-dark-muted uppercase">{t.lyrics}</span>
               <textarea 
                 value={track.notes || ''} 
                 onChange={(e) => updateTrack(albumId, track.id, { notes: e.target.value })}
-                className="text-[13px] bg-transparent w-full min-h-[150px] resize-y outline-none leading-relaxed mt-1"
+                className="text-[13px] bg-transparent w-full min-h-[120px] resize-y outline-none leading-relaxed mt-1"
                 placeholder={t.writeLyricsHere}
               />
             </div>
@@ -295,7 +295,7 @@ export function TrackList({ albumId }: { albumId: string }) {
       transition={{ duration: 0.5, delay: 0.1 }}
       className="w-full max-w-3xl"
     >
-      <div className="flex justify-between items-end pb-4 border-b border-light-border dark:border-dark-border mb-4">
+      <div className="flex justify-between items-end pb-4 border-b border-light-border dark:border-dark-border mb-4 max-md:flex-wrap max-md:gap-2">
         <h3 className="text-[15px] font-bold tracking-[0.15em] uppercase">{t.tracklist}</h3>
         <div className="font-mono text-[11px] text-light-muted dark:text-dark-muted uppercase tracking-widest transition-colors">
           {t.total}: {sumDurations(album.tracks, useStore.getState().settings.durationFormat)}

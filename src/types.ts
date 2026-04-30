@@ -1,4 +1,4 @@
-export type AlbumStatus = 'DEMO' | 'ROUGH_MIX' | 'MIXED' | 'MASTERED' | 'RELEASED';
+export type AlbumStatus = 'ROUGH_MIX' | 'MIXED' | 'MASTERED' | 'RELEASED';
 
 export interface Track {
   id: string;

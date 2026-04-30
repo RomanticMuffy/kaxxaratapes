@@ -116,7 +116,7 @@ export function SettingsModal() {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="bg-light-bg dark:bg-[#141414] border border-light-border dark:border-[#2A2A2A] w-full max-w-md p-8 flex flex-col gap-6 rounded-3xl shadow-2xl" 
+            className="bg-light-bg dark:bg-[#141414] border border-light-border dark:border-[#2A2A2A] w-full max-w-md max-h-[90vh] p-6 md:p-8 flex flex-col gap-4 md:gap-6 rounded-2xl md:rounded-3xl shadow-2xl overflow-y-auto" 
             onClick={e => e.stopPropagation()}
           >
             <div className="flex justify-between items-center">

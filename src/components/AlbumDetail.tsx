@@ -81,29 +81,18 @@ export function AlbumDetail({ albumId }: { albumId: string }) {
   };
 
   return (
-    <div className="flex-1 overflow-y-auto w-full max-w-7xl mx-auto flex flex-col md:flex-row bg-light-bg dark:bg-dark-bg">
+    <div className="flex-1 overflow-hidden w-full max-w-7xl mx-auto flex flex-col md:flex-row bg-light-bg dark:bg-dark-bg">
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.4 }}
-        className="w-full md:w-1/2 lg:w-2/5 shrink-0 max-w-[500px] p-8 lg:p-12 border-r border-light-border dark:border-dark-border flex flex-col gap-6 sticky top-0 md:h-screen overflow-y-auto"
+        className="w-full md:w-1/2 lg:w-2/5 shrink-0 max-w-[500px] p-8 lg:p-12 border-r border-light-border dark:border-dark-border flex flex-col gap-6 md:h-screen overflow-y-auto bg-light-bg dark:bg-dark-bg"
       >
         <div className="flex items-center justify-between border-b border-light-border dark:border-dark-border pb-4 mb-4">
           <div className="flex items-center gap-3">
                 <span className="text-[11px] text-light-muted dark:text-dark-muted tracking-[0.1em] uppercase">{t.projects} /</span>
                 <span className="text-[11px] font-bold tracking-[0.1em] uppercase max-w-[200px] truncate">{album.title || t.untitledProject}</span>
               </div>
-              <select 
-                value={album.status}
-                onChange={(e) => updateAlbum(albumId, { status: e.target.value as any })}
-                className="px-3 py-1 border border-light-primary dark:border-dark-primary text-[10px] font-bold tracking-widest uppercase bg-transparent cursor-pointer outline-none appearance-none text-center rounded-full transition-colors"
-              >
-                <option value="DEMO">{t.demo}</option>
-                <option value="ROUGH_MIX">{t.roughMix}</option>
-                <option value="MIXED">{t.mixed}</option>
-                <option value="MASTERED">{t.mastered}</option>
-                <option value="RELEASED">{t.released}</option>
-              </select>
             </div>
 
             <motion.div 

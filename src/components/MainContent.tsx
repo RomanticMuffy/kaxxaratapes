@@ -3,13 +3,15 @@ import { useStore } from '../store';
 import { AlbumDetail } from './AlbumDetail';
 import { getTranslations } from '../lib/i18n';
 import { motion, AnimatePresence } from 'motion/react';
+import { useIsMobile } from '../hooks/useMobile';
 
 export function MainContent() {
   const { activeAlbumId, albumsMap, createAlbum, settings } = useStore();
   const t = getTranslations(settings.language);
+  const isMobile = useIsMobile();
 
   return (
-    <div className="flex-1 flex flex-col relative overflow-hidden bg-light-bg dark:bg-dark-bg text-center">
+    <div className="flex-1 flex flex-col relative overflow-hidden bg-light-bg dark:bg-dark-bg text-center pt-14 md:pt-0">
       <AnimatePresence mode="wait">
         {activeAlbumId && albumsMap[activeAlbumId] ? (
           <motion.div 

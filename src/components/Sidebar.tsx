@@ -6,7 +6,11 @@ import { getCoverArt } from '../lib/storage';
 import { getTranslations } from '../lib/i18n';
 import { motion, AnimatePresence } from 'motion/react';
 
-export function Sidebar() {
+interface SidebarProps {
+  onNavigate?: () => void;
+}
+
+export function Sidebar({ onNavigate }: SidebarProps) {
   const { 
     albumsMap, albumOrder, activeAlbumId, 
     settings, searchQuery, 
@@ -105,7 +109,10 @@ export function Sidebar() {
                 exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.2, delay: index * 0.03 }}
                 key={id}
-                onClick={() => setActiveAlbum(id)}
+                onClick={() => {
+                  setActiveAlbum(id);
+                  onNavigate?.();
+                }}
                 className={cn(
                   "group w-full text-left flex items-center gap-3 p-2 rounded-2xl transition-colors duration-200 cursor-pointer relative",
                   isActive 
