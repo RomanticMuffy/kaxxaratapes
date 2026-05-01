@@ -30,6 +30,7 @@ All files are stored locally via `localStorage` and `IndexedDB`. Nothing is uplo
 - **Drag & drop reordering** - reorder albums and tracks without friction
 - **Dark / Light mode** - follows system preference, with a manual toggle
 - **Multi-language** - English and Portuguese, open for community contribution
+- **Full mobile support** - fully responsive layout with touch-friendly controls, works seamlessly on smartphones and tablets
 
 ---
 
@@ -85,6 +86,7 @@ Everything runs locally. No cloud, no accounts.
   <img src="https://img.shields.io/badge/-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/-IndexedDB-FF6B35?style=for-the-badge&logo=databricks&logoColor=white" alt="IndexedDB">
   <img src="https://img.shields.io/badge/-React_Easy_Crop-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React Easy Crop">
+  <img src="https://img.shields.io/badge/-Mobile_Ready-34D399?style=for-the-badge&logo=android&logoColor=white" alt="Mobile Ready">
 </div>
 
 ---
